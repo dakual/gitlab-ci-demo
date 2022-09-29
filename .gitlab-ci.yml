@@ -17,7 +17,7 @@ stage_test:
     - echo "Starting to test"
     - python3 -m unittest
   only:
-    - master
+    - main
   tags:
     - prod
 
@@ -33,7 +33,7 @@ stage_build:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
   only:
-    - master
+    - main
   tags:
     - prod
 
@@ -42,7 +42,6 @@ stage_deploy:
   script:
     - echo "Starting to deploy"
   only:
-    - master
+    - main
   tags:
     - prod
-    

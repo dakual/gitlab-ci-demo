@@ -27,8 +27,6 @@ stage_build:
 
 stage_deploy:
   stage: deploy
-  before_script:
-    - chmod 400 $SSH_KEY
   script:
     - echo "Starting to deploy"
   tags:

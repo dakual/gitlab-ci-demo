@@ -23,16 +23,3 @@ gitlab-runner start
 gitlab-runner restart
 gitlab-runner unregister --name <runner-name>
 gitlab-runner unregister --all-runners
-
-
-
-
-gitlab-runner register -n \
---description "Sample Runner 1" \
---url "https://gitlab.com/" \
---registration-token "GR1348941VTA4dKk34jMmZM2cXLwb" \
---executor docker \
---docker-image "docker:latest" \
---docker-volumes /var/run/docker.sock:/var/run/docker.sock \
---docker-privileged \
---tag-list prod

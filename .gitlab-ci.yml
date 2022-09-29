@@ -27,6 +27,7 @@ stage_build:
   services:
     - docker:dind
   before_script:
+    - echo $REGISTRY_USER
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - echo "Starting to build"

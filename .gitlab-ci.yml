@@ -10,8 +10,11 @@ stages:
 stage_test:
   stage: test
   image: python:3.9-slim-buster
+  before_script:
+    - pip install -r requirements.txt
   script:
     - echo "Starting to test"
+    - python3 -m unittest
   tags:
     - prod
 
@@ -23,6 +26,7 @@ stage_build:
   script:
     - echo "Starting to build"
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
   tags:
     - prod
 

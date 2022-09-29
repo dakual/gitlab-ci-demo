@@ -1,11 +1,16 @@
+```sh
 docker run -d --name gitlab-runner --restart always \
 -v ~/Genel/gitlab/config:/etc/gitlab-runner \
 -v /var/run/docker.sock:/var/run/docker.sock \
 gitlab/gitlab-runner:latest
+```
 
+```sh
 docker exec -it gitlab-runner bash
 docker logs gitlab-runner -f
+```
 
+```sh
 gitlab-runner register -n \
 --description "Sample Runner 1" \
 --url <GITLAB-URL> \
@@ -15,11 +20,13 @@ gitlab-runner register -n \
 --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
 --docker-privileged \
 --tag-list prod
+```
 
-
+```sh
 gitlab-runner list
 gitlab-runner stop
 gitlab-runner start
 gitlab-runner restart
 gitlab-runner unregister --name <runner-name>
 gitlab-runner unregister --all-runners
+```

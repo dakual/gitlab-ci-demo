@@ -12,7 +12,8 @@ stage_test:
   image: python:3.9-slim-buster
   script:
     - echo "Starting to test"
-
+  tags:
+    - prod
 
 stage_build:
   stage: build
@@ -21,7 +22,8 @@ stage_build:
     - docker:dind
   script:
     - echo "Starting to build"
-    
+  tags:
+    - prod
 
 stage_deploy:
   stage: deploy
@@ -29,3 +31,5 @@ stage_deploy:
     - chmod 400 $SSH_KEY
   script:
     - echo "Starting to deploy"
+  tags:
+    - prod

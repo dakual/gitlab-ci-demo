@@ -16,6 +16,8 @@ stage_test:
   script:
     - echo "Starting to test"
     - python3 -m unittest
+  only:
+    - master
   tags:
     - prod
 
@@ -24,10 +26,14 @@ stage_build:
   image: docker:latest
   services:
     - docker:dind
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - echo "Starting to build"
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-    # - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+  only:
+    - master
   tags:
     - prod
 
@@ -35,5 +41,7 @@ stage_deploy:
   stage: deploy
   script:
     - echo "Starting to deploy"
+  only:
+    - master
   tags:
     - prod

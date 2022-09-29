@@ -1,0 +1,31 @@
+variables:
+  IMAGE_NAME: kurtay/gitlab-app
+  IMAGE_TAG: py-1.0
+
+stages:
+  - test
+  - build
+  - deploy
+
+stage_test:
+  stage: test
+  image: python:3.9-slim-buster
+  script:
+    - echo "Starting to test"
+
+
+stage_build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Starting to build"
+    
+
+stage_deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - echo "Starting to deploy"

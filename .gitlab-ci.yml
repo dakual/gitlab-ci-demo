@@ -32,6 +32,8 @@ stage_build:
     - echo "Starting to build"
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
+  dependencies:
+    - stage_test
   only:
     - main
   tags:
@@ -41,6 +43,8 @@ stage_deploy:
   stage: deploy
   script:
     - echo "Starting to deploy"
+  dependencies:
+    - stage_build
   only:
     - main
   tags:

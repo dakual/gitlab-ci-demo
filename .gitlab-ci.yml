@@ -1,7 +1,7 @@
 workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "web"'
-    
+
 variables:
   IMAGE_NAME: kurtay/gitlab-app
   IMAGE_TAG: py-1.0
@@ -20,6 +20,7 @@ stage_test:
   script:
     - echo "Starting to test"
     - python3 -m unittest
+  when: manual
   only:
     - main
   tags:
@@ -36,6 +37,7 @@ stage_build:
     - echo "Starting to build"
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
+  when: manual
   dependencies:
     - stage_test
   only:
@@ -51,6 +53,7 @@ stage_deploy:
   script:
     - echo "Starting to deploy"
     - kubectl version
+  when: manual
   dependencies:
     - stage_build
   only:

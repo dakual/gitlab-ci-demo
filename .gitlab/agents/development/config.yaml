@@ -1,0 +1,7 @@
+gitops:
+  manifest_projects:
+  - id: dakual/gitlab-ci-cd-demo
+    default_namespace: default
+ci_access:
+  projects:
+  - id: dakual/gitlab-ci-cd-demo

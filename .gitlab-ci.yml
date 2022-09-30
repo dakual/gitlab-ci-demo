@@ -46,7 +46,7 @@ stage_deploy:
   stage: deploy
   script:
     - echo "Starting to deploy"
-    - kubectl get nodes
+    - kubectl version
   dependencies:
     - stage_build
   only:

@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: myapp
   labels:
-    app: nginx
+    app: myapp
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: myapp
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: myapp
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: myapp
+        image: kurtay/gitlab-app:py-1.0
         ports:
-        - containerPort: 80
+        - containerPort: 5000

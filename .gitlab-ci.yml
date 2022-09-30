@@ -41,6 +41,7 @@ stage_build:
 
 stage_deploy:
   image: bitnami/kubectl:latest
+  entrypoint: ['']
   stage: deploy
   script:
     - echo "Starting to deploy"

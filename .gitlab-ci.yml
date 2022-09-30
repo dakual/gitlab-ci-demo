@@ -52,7 +52,9 @@ stage_deploy:
   stage: deploy
   script:
     - echo "Starting to deploy"
-    - kubectl version
+    - kubectl config get-contexts
+    - kubectl config use-context dakual/gitlab-ci-cd-demo:development
+    - kubectl get pods
   when: manual
   dependencies:
     - stage_build

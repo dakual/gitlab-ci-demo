@@ -54,7 +54,8 @@ stage_deploy:
     - echo "Starting to deploy"
     - kubectl config get-contexts
     - kubectl config use-context dakual/gitlab-ci-cd-demo:development
-    - kubectl get nodes,pods
+    - kubectl apply -f k8s/deployment.yaml
+    - kubectl delete -f k8s/service.yaml 
   when: manual
   dependencies:
     - stage_build

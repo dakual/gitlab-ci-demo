@@ -40,12 +40,15 @@ stage_build:
     - prod
 
 stage_deploy:
+  image: bitnami/kubectl:latest
   stage: deploy
   script:
     - echo "Starting to deploy"
+    - kubectl get nodes
   dependencies:
     - stage_build
   only:
     - main
   tags:
     - prod
+

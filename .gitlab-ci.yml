@@ -1,6 +1,7 @@
 variables:
+  DEPLY_NAME: myapp
   IMAGE_NAME: kurtay/gitlab-app
-  IMAGE_TAG: py-1.0
+  IMAGE_TAG: py-1.1
 
 stages:
   - test

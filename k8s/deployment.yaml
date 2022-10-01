@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: $DEPLY_NAME
   labels:
-    app: myapp
+    app: $DEPLY_NAME
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: $DEPLY_NAME
   replicas: 1
   template:
     metadata:
       labels:
-        app: myapp
+        app: $DEPLY_NAME
     spec:
       containers:
-      - name: myapp
-        image: kurtay/gitlab-app:py-1.0
+      - name: $DEPLY_NAME
+        image: $IMAGE_NAME:$IMAGE_TAG
         ports:
         - containerPort: 5000

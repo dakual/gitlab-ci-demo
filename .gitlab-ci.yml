@@ -1,5 +1,4 @@
 variables:
-  DEPLY_NAME: myapp
   IMAGE_NAME: kurtay/gitlab-app
   IMAGE_TAG: py-1.1
 
@@ -51,8 +50,8 @@ stage_deploy:
     - echo "Starting to deploy"
     - kubectl config get-contexts
     - kubectl config use-context dakual/gitlab-ci-cd-demo:development
-    - envsubst < k8s/deployment.yaml > k8s/deployment-${CI_JOB_NAME}.yaml
-    - envsubst < k8s/service.yaml > k8s/service-${CI_JOB_NAME}.yaml
+    - sed -i "s/<IMAGE>/${IMAGE_NAME}/g" Deployment.yaml
+    - sed -i "s/<VERSION>/${IMAGE_TAG}/g" Deployment.yaml
     - kubectl apply -f k8s/deployment.yaml
     - kubectl apply -f k8s/service.yaml 
   when: manual

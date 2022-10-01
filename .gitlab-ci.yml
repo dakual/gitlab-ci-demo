@@ -1,7 +1,3 @@
-workflow:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-
 variables:
   IMAGE_NAME: kurtay/gitlab-app
   IMAGE_TAG: py-1.0

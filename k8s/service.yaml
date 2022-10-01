@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: $DEPLY_NAME
-  name: $DEPLY_NAME
+    app: ${DEPLY_NAME}
+  name: ${DEPLY_NAME}
 spec:
   ports:
   - nodePort: 30500
@@ -11,5 +11,5 @@ spec:
     protocol: TCP
     targetPort: 5000
   selector:
-    app: $DEPLY_NAME
+    app: ${DEPLY_NAME}
   type: NodePort

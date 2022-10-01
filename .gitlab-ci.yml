@@ -51,6 +51,8 @@ stage_deploy:
     - echo "Starting to deploy"
     - kubectl config get-contexts
     - kubectl config use-context dakual/gitlab-ci-cd-demo:development
+    - envsubst < deployment.yaml > deployment-${CI_JOB_NAME}.yaml
+    - envsubst < service.yaml > service-${CI_JOB_NAME}.yaml
     - kubectl apply -f k8s/deployment.yaml
     - kubectl apply -f k8s/service.yaml 
   when: manual
